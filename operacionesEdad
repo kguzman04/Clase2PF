@@ -1,0 +1,10 @@
+import numpy as np
+edad1= 24/2
+print(edad1)
+
+hermana= 6+15
+hermana= hermana *3
+print(hermana)
+
+if (hermana > 6):
+    print(hermana)
