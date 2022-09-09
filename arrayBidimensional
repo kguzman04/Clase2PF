@@ -1,0 +1,7 @@
+import numpy as np
+y=np.reshape(np.array(range(0,9)),(3,3)) #ejercicio
+print(y)
+
+
+z=np.identity(6)
+print(z)
