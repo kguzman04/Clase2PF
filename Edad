@@ -1,0 +1,10 @@
+edad=15
+
+if edad>=18:
+    
+    print("Es mayor de edad")
+else:
+     print("No es mayor de edad")
+
+     
+# edad= int(input("Por favor, escriba su edad en números enteros"))
