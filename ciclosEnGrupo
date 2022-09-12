@@ -1,0 +1,13 @@
+#activdiad
+#Cliclos en un grupo
+max= 0
+min= 999
+dic={"Edwin":23, "Pedro":16, "Liliana":30, "Marco":25, "Gerardo":9}
+for k,v in dic.items():
+    print(k,v)
+    if(v>max):
+        max=v
+    if(v<min):
+        min=v;
+    
+print("El numero menor es:", min, "y el numero maximo es:", max)
