@@ -1,0 +1,20 @@
+# 1.	Crear un programa en Visual Studio que me permita saber cuál  es el competidor más veterano que ha recibido medalla (oro,  plata o bronce)
+
+# 2.	Crear un programa en Visual Studio que me permita saber cuál  es el competidor más joven que ha recibido medalla de oro
+import pandas as pd
+import numpy as np
+
+datos1=pd.read_csv("C:\\Users\\kguzman\\Desktop\\athlete_events.csv")
+datos1
+jugadoresMedallas = datos1[datos1["Medal"].notna()]
+jugadoresMedallas
+jugadoresMedallas["Age"].max()
+Veterano = jugadoresMedallas[jugadoresMedallas["Age"]== jugadoresMedallas["Age"].max() ]
+
+
+Veterano
+jugadoresMedallasOro = datos1[datos1["Medal"] == "Gold"]
+jugadoresMedallasOro
+jugadoresMedallasOro["Age"].min() 
+masJovenOro = jugadoresMedallasOro[jugadoresMedallasOro["Age"]== jugadoresMedallasOro["Age"].min() ]
+masJovenOro
