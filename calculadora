@@ -1,0 +1,29 @@
+valor1= input("Ingrese un numero")
+valor2= input("Ingrese un numero")
+class Calculadora: #Def clase
+    '''Clase que representa una calculadora'''
+    def __init__(self, valor1, valor2): #Definir función init
+        self.valor1=float(valor1)
+        self.valor2=float(valor2)
+        
+    def suma(self):
+        '''Impresión de la suma de 2 valores'''
+        resultado = self.valor1+self.valor2
+        print("la suma es:", resultado)
+    
+    def resta(self):
+        '''Impresión de la resta de 2 valores'''
+        resultado = self.valor1-self.valor2
+        print("la resta es:", resultado)
+    
+    def divicion(self):
+        '''Impresión de la divicion de 2 valores'''
+        resultado = self.valor1/self.valor2
+        print("la divicion es:", resultado)
+    
+    def multiplicacion(self):
+        '''Impresión de la multiplicacion de 2 valores'''
+        resultado = self.valor1*self.valor2
+        print("la multiplicacion es:", resultado)
+
+Calculadora=Calculadora(valor1,valor2)
