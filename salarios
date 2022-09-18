@@ -1,0 +1,46 @@
+import pandas as pd
+import numpy  as np
+
+dict_1={
+    "Nombre":["Ringo","John","Paul","George","Yoko"],
+    "Edad":[45,34,42,38,47],
+    "Salario":[12000,14000,13000,11000,10000],
+    "Genero":["M","M","M","M","F"]
+}
+
+data=pd.DataFrame(dict_1)
+
+data.head()
+
+datos_categoricos=data.select_dtypes(exclude=[np.number])#Excluir info numerica y seleccionar el resto
+print("La base contiene {0} datos categóricos".format(datos_categoricos.shape[1]))
+
+data.dtypes #datos de columna
+
+data.describe()
+
+data.median(numeric_only=True)
+
+data.count()
+
+data.mean(numeric_only=True)
+
+data.mode(numeric_only=True)
+
+data.std(numeric_only=True)
+data.sum()
+
+data.max()
+data.min()
+data[data["Edad"]==data["Edad"].min()]
+data["Edad"].abs()
+data.prod(numeric_only=True)
+data.cumsum()
+data["Edad"].cumprod()
+data2=pd.get_dummies(data[["Genero"]])
+data2
+data2.value_counts()
+SalarioMinimo = data[data["Salario"]==data["Salario"].min()]
+print(SalarioMinimo)
+SalarioMaximo = data[data["Salario"]==data["Salario"].max()]
+print(SalarioMaximo)
