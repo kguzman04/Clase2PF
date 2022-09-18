@@ -21,3 +21,6 @@ agrupado.head(6)
 by_year = agrupado.sort_values('Year')
 medalsy=by_year.tail(3)
 pie_year=medalsy["Total_medals"].plot.pie(figsize=(10,10))
+ax= pie_year
+fig= ax.get_figure()
+fig.savefig("GraficaPay")
