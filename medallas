@@ -1,0 +1,17 @@
+#Actividad medallas
+import pandas as pd
+import numpy  as np
+datos1=pd.read_csv("C:\\Users\\kguzman\\Desktop\\athlete_events.csv")
+paises_medalleros=datos1[['Team','Year']]
+paises_medalleros['Team'].value_counts().head(10).plot(kind="bar")
+Ejer_clase=datos1[["Year","Season","Medal","NOC"]]
+Ejer_clase.head()
+dummies=pd.get_dummies(Ejer_clase[["Medal"]])
+dummies.head()
+concatenado=pd.concat([Ejer_clase,dummies], axis=1)
+concatenado.head()
+agrupado=concatenado.groupby(["Year","Medal","Season"]).sum()
+agrupado.head(8)
+
+pearson=agrupado.corr()
+pearson.style.background_gradient(cmap="cool")
