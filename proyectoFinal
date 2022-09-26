@@ -1,0 +1,103 @@
+import pandas as pd
+import numpy  as np
+import seaborn as sns
+import plotly.express as px
+# import matplotlib as plt
+import matplotlib.pyplot as plt
+
+
+# MyGrowth=pd.read_csv("MyGrowth_2022.csv")
+mygrowth=pd.read_csv("mygrowth.csv", encoding = 'latin-1')
+
+
+
+def accion1():
+    print('Has elegido la opción 1')
+#     data1 = sns.mygrowth('mes')
+
+
+
+    h_mensuales=mygrowth[['fechaRegistro','horasCapacitacion']]
+    concatenado=pd.concat([h_mensuales], axis=1)
+    agrupado=concatenado.groupby(["fechaRegistro"]).sum()  
+    cars =agrupado["horasCapacitacion"]
+    pie_plot=agrupado["horasCapacitacion"].plot.pie(figsize=(10,10), autopct="%0.1f%%")    
+
+    
+
+def accion2():
+    print('Has elegido la opción 2')
+    h_mensuales=mygrowth[['nombreCurso','horasCapacitacion']]
+    concatenado=pd.concat([h_mensuales], axis=1)
+    agrupado=concatenado.groupby(["nombreCurso"]).sum()  
+#     cantidad=agrupado["nombreCurso"][:3].unique()
+    pie2=agrupado["horasCapacitacion"][:20].plot.pie(figsize=(30,30), autopct="%0.1f%%", subplots=True,startangle=90,  legend = False, fontsize=14)  
+#     pie_plot=agrupado["horasCapacitacion"].plot.pie(figsize=(12,12), autopct="%0.1f%%")
+   
+
+
+def accion3():
+    print('Has elegido la opción 3')    
+    city_count  = mygrowth['plataformaAprendizaje'].value_counts()
+    city_count = city_count[:10,]
+    plt.figure(figsize=(10,5))
+    sns.barplot(city_count.index, city_count.values, alpha=0.8)
+#     plt.title('Starbucks in top 10 cities in the World')
+    plt.ylabel('Number of Occurrences', fontsize=12)
+    plt.xlabel('Plataforma de Aprendizaje', fontsize=12)
+    plt.xticks(rotation=65)
+    plt.show()
+ 
+# Show the plot
+
+    
+    
+    
+
+def salir():
+    print('Saliendo')    
+
+
+        
+def mostrar_menu(opciones):
+    print('Analisis de información: My Growth-2022')
+    print('Seleccione una opción:')
+    for clave in sorted(opciones):
+        print(f' {clave}) {opciones[clave][0]}')
+        
+def leer_opcion(opciones):
+    while (a := input('Opción: ')) not in opciones:
+        print('Opción incorrecta, vuelva a intentarlo.')
+    return a
+
+
+def ejecutar_opcion(opcion, opciones):
+    opciones[opcion][1]()
+
+
+def generar_menu(opciones, opcion_salida):
+    opcion = None
+    if opcion != opcion_salida:
+        mostrar_menu(opciones)
+        opcion = leer_opcion(opciones)
+        ejecutar_opcion(opcion, opciones)
+        print()
+
+
+def menu_principal():
+    opciones = {
+        '1': ('Opción 1.-Horas de capacitación mensuales', accion1),
+        '2': ('Opción 2.-Cursos con mayor interes por los empleados top 10', accion2),
+        '3': ('Opción 3.-Plataforma con mayor interes', accion3),
+        '4': ('Salir', salir)
+    }
+
+    generar_menu(opciones, '4')
+
+
+
+
+
+if __name__ == '__main__':
+       
+    menu_principal()
