@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+import matplotlib
+
+data_students = pd.read_csv("clean_students_complete.csv")
+data_students.head()
+data_students.set_index('Student ID')
+data_students[data_students["student_name"]=="Michael Smith"].count()
+print(data_students["gender"].value_counts())
+nombres = data_students["gender"].unique()
+data_students["gender"].value_counts().plot.pie(labels = nombres,autopct="%0.1f")
+#Actividad Alumnos por Grado
+data_students["grade"].value_counts().plot(kind="bar")
