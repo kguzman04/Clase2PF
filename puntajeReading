@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import matplotlib
+
+data_students = pd.read_csv("clean_students_complete.csv")
+data_students.head()
+data_reading = data_students[["gender", "school_name","reading_score"]]
+data_reading
+data_read_M = data_reading[data_reading["gender"]=="M"]
+data_read_F = data_reading[data_reading["gender"]=="F"]
+grafica1 = data_read_M.groupby(["school_name"], as_index=False).mean()
+grafica2 = data_read_F.groupby(["school_name"], as_index=False).mean()
+grafica1 = grafica1.set_index("school_name")
+grafica2 = grafica2.set_index("school_name")
+grafica1.sort_values(by="reading_score", ascending=False).plot(kind="bar")
+grafica2.sort_values(by="reading_score", ascending=False).plot(kind="bar")
+maximo_M = grafica1.sort_values(by="reading_score", ascending=False).head(1)
+maximo_F = grafica2.sort_values(by="reading_score", ascending=False).head(1)
+maximo_M['Gender']='M'
+maximo_M['index']=0
+maximo_F['Gender']='F'
+maximo_F['index']=1
+total = pd.concat([maximo_M,maximo_F])
+total["escuela"]='school_name'
+total = total.set_index('index')
+print(total)
