@@ -1,0 +1,49 @@
+import os
+while True:
+    importe_item = 0
+    subtotal = 0
+    total = 0
+    descuento = 0
+    contador = 0
+    otra_compra = ""
+    
+    os.system("clear")
+    while True:
+        contador += 1
+        importe_item = float ( 
+            input("Capture compra {0} <0 para salir>". format(contador)))
+        if importe_item == 0:
+            contador -= 1
+            break
+        elif importe_item < 0:
+            contador -= 1
+            print("No se permiten numeros negativos")
+            continue
+        else:
+            subtotal += importe_item
+            
+            if subtotal >1000:
+                descuento = subtotal * 0.10
+                total = subtotal - descuento
+                
+                
+                os.system("clear")
+                print("=" * 50)
+                print("Resumen de compra")
+                print("=" *50)
+                print("Cantidad de Articulos {0}".format(contador))
+                print("Sub Total {0}".format(subtotal))
+                print("Descuento{0}".format(descuento))
+                if descuento > 0:
+                    print("En compras mayores de 1,000 obtiene 10% de descuento")
+                    print("-" * 50)
+                    print("total a pagar{0}".format(total))
+                    print("-" * 50)
+                    otra_compra = input("Captura otra compra? <Salir -> N>")
+                    if otra_compra == 'N':
+                        break
+                        os.system("clear")
+                        print("*" * 50)
+                        print ("Gracias por sus compras!!") 
+                        
+    
