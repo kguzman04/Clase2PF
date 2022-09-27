@@ -1,0 +1,15 @@
+import pandas as pd
+import numpy as np
+import matplotlib
+
+#Ejercicio
+data_students = pd.read_csv("clean_students_complete.csv")
+data_students.head()
+data_reading = data_students[["reading_score","grade","gender", "school_name"]]
+# data_reading.sort_values(by=['reading_score'], ascending=False)
+data_reading.sort_values("reading_score", axis = 0, ascending = False,
+                 inplace = True, na_position ='last')
+
+data_reading.head()
+
+
