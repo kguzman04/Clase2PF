@@ -1,0 +1,17 @@
+import pandas as pd
+import numpy as np
+import matplotlib as plt
+
+
+data_students=pd.read_csv("clean_students_complete.csv")
+data_students['reading_score_cat'] = pd.cut(data_students.reading_score, bins =[0,69,float('Inf')] , labels=['Reprobado','Aprobado'])
+data_students['math_score_cat'] = pd.cut(data_students.reading_score, bins =[0,69,float('Inf')] , labels=['Reprobado','Aprobado'])
+totalesAprobadosReading = data_students.value_counts("reading_score_cat")
+etiquetas = data_students["reading_score_cat"].value_counts().keys()
+
+graficaAprobadosReading = totalesAprobadosReading.plot.pie(figsize=(10,10) ,labels=etiquetas,autopct="%0.5f" )
+
+totalesAprobadosMath = data_students.value_counts("math_score_cat")
+etiquetas = data_students["math_score_cat"].value_counts().keys()
+
+graficaAprobadosMath = totalesAprobadosMath.plot.pie(figsize=(10,10) ,labels=etiquetas,autopct="%0.5f" )
